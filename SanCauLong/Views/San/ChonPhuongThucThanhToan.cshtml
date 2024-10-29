@@ -1,0 +1,124 @@
+﻿@model SanCauLong.Models.SanCauLong
+@{
+    ViewBag.Title = "Chọn Phương Thức Thanh Toán";
+
+    int maSan = Convert.ToInt32(ViewBag.MaSan);
+    DateTime ngayDat = Convert.ToDateTime(ViewBag.NgayDat);
+    DateTime thoiGianBatDau = Convert.ToDateTime(ViewBag.ThoiGianBatDau);
+    DateTime thoiGianKetThuc = Convert.ToDateTime(ViewBag.ThoiGianKetThuc);
+}
+
+<div class="payment-method-container">
+    <h2>Chọn Phương Thức Thanh Toán</h2>
+
+    <form action="@Url.Action("DatSan", "San")" method="post">
+        @Html.Hidden("maSan", maSan)
+        @Html.Hidden("NgayDat", ngayDat.ToString("yyyy-MM-dd"))
+        @Html.Hidden("ThoiGianBatDau", thoiGianBatDau.ToString("HH:mm"))
+        @Html.Hidden("ThoiGianKetThuc", thoiGianKetThuc.ToString("HH:mm"))
+
+        <label>Chọn phương thức thanh toán:</label>
+        <div class="payment-options">
+            <div class="payment-option">
+                <input type="radio" name="thanhToan" value="truoc" id="pay-before" required />
+                <label for="pay-before">Thanh toán trước</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="thanhToan" value="sau" id="pay-after" />
+                <label for="pay-after">Thanh toán sau</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-confirm">Xác nhận</button>
+    </form>
+</div>
+
+<style>
+    body {
+        background-color: #f4f4f4; /* Màu nền nhẹ nhàng */
+        font-family: Arial, sans-serif;
+    }
+
+    .payment-method-container {
+        max-width: 500px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: #fff; /* Nền trắng */
+        border: 1px solid #ccc; /* Viền nhẹ */
+        border-radius: 10px; /* Bo góc */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+        text-align: center;
+        transition: transform 0.3s; /* Hiệu ứng di chuyển */
+    }
+
+        .payment-method-container:hover {
+            transform: translateY(-5px); /* Nâng lên khi hover */
+        }
+
+    h2 {
+        color: #333; /* Màu chữ tối */
+        margin-bottom: 1.5rem;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        display: block;
+        text-align: left;
+        color: #e74c3c; /* Màu đỏ */
+    }
+
+    .payment-options {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: center; /* Căn giữa các nút */
+    }
+
+    .payment-option {
+        margin: 0 1rem; /* Khoảng cách giữa các tùy chọn */
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+        .payment-option input[type="radio"] {
+            display: none; /* Ẩn radio button mặc định */
+        }
+
+        .payment-option label {
+            padding: 10px 15px;
+            background-color: #e74c3c; /* Màu đỏ */
+            color: #fff; /* Chữ trắng */
+            border-radius: 5px; /* Bo góc */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Bóng đổ cho nút */
+        }
+
+        .payment-option input[type="radio"]:checked + label {
+            background-color: #c0392b; /* Màu đỏ đậm khi chọn */
+            transform: scale(1.05); /* Tăng kích thước khi chọn */
+        }
+
+        .payment-option label:hover {
+            background-color: #d35400; /* Màu cam khi hover */
+            transform: translateY(-3px); /* Nâng lên khi hover */
+        }
+
+    .btn-confirm {
+        background-color: #e74c3c; /* Màu đỏ cho nút xác nhận */
+        color: #fff;
+        padding: 0.7rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển màu */
+    }
+
+        .btn-confirm:hover {
+            background-color: #c0392b; /* Màu đỏ đậm hơn khi hover */
+            transform: translateY(-3px); /* Nâng lên khi hover */
+        }
+</style>

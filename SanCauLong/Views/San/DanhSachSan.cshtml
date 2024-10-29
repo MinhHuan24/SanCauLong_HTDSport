@@ -154,7 +154,8 @@
                 <div class="court-price">Giá: @court.GiaTien VND/Giờ</div>
                 <div class="court-status">Trạng thái: @court.TrangThai</div>
                 <div class="court-rating">Rating: @court.Rating</div>
-                <a href="@Url.Action("DatSan", "San", new { maSan = court.MaSan })" class="btn-book">Đặt Sân</a>
+
+                <a href="@Url.Action("ChiTietSan", "San", new { maSan = court.MaSan })" class="btn-book">Chi tiết</a>
             </div>
         }
     </div>

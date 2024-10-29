@@ -266,6 +266,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\San\DanhSachSan.cshtml" />
     <Content Include="Views\San\DatSan.cshtml" />
+    <Content Include="Views\San\ChiTietSan.cshtml" />
+    <Content Include="Views\San\ThanhToanTruoc.cshtml" />
+    <Content Include="Views\San\ChonPhuongThucThanhToan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
