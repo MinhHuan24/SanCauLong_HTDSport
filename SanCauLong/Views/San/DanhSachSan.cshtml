@@ -3,23 +3,50 @@
     ViewBag.Title = "DanhSachSan";
 }
 <style>
+    .search-container {
+        text-align: center; /* Căn giữa nội dung */
+        margin: 1rem 0; /* Khoảng cách trên và dưới */
+    }
+
+    input[type="text"] {
+        padding: 0.5rem;
+        border: 1px solid #ccc; /* Viền nhẹ cho input */
+        border-radius: 5px; /* Bo tròn */
+        margin-right: 0.5rem; /* Khoảng cách giữa input và button */
+        width: 250px; /* Đặt chiều rộng cho input */
+    }
+
+    button {
+        background-color: #c0392b; /* Nền đỏ cho nút tìm */
+        color: white; /* Chữ trắng */
+        border: none; /* Không viền */
+        padding: 0.5rem 1rem; /* Khoảng cách trong nút */
+        border-radius: 5px; /* Bo tròn */
+        cursor: pointer; /* Con trỏ khi hover */
+    }
+
+        button:hover {
+            background-color: #a93226; /* Màu đỏ đậm khi hover */
+        }
+
     body {
         font-family: Arial, sans-serif;
-        background-color: #f3f4f6;
+        background-color: #f3f4f6; /* Màu nền sáng */
         margin: 0;
         padding: 0;
-        color: #333;
+        color: #333; /* Màu chữ tối */
     }
 
     header {
-        background-color: #4CAF50;
-        color: white;
+        background-color: #c0392b; /* Màu đỏ cho header */
+        color: white; /* Chữ trắng trên nền đỏ */
         text-align: center;
         padding: 1rem;
     }
 
     h1 {
         margin: 0;
+        font-size: 2rem; /* Kích thước chữ lớn hơn */
     }
 
     .court-list {
@@ -31,14 +58,20 @@
     }
 
     .court-card {
-        background-color: white;
-        border: 1px solid #ddd;
+        background-color: white; /* Nền trắng cho mỗi sân */
+        border: 1px solid #ddd; /* Viền nhẹ */
         border-radius: 5px;
         width: 250px;
         padding: 1rem;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển động */
     }
+
+        .court-card:hover {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
 
     .court-img {
         width: 100%;
@@ -48,9 +81,10 @@
     }
 
     .court-name {
-        font-size: 1.2rem;
+        font-size: 1.5rem; /* Kích thước chữ lớn hơn */
         font-weight: bold;
         margin: 0.5rem 0;
+        color: #c0392b; /* Màu đỏ cho tên sân */
     }
 
     .court-address, .court-price, .court-status, .court-rating {
@@ -58,19 +92,57 @@
         margin: 0.3rem 0;
     }
 
+    .btn-book {
+        display: inline-block;
+        background-color: #c0392b; /* Nền đỏ cho nút đặt sân */
+        color: white; /* Chữ trắng */
+        padding: 0.5rem 1rem; /* Khoảng cách trong nút */
+        border: none; /* Không viền */
+        border-radius: 5px; /* Bo tròn */
+        text-decoration: none; /* Không gạch chân */
+        transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+    }
+
+        .btn-book:hover {
+            background-color: #a93226; /* Màu đỏ đậm khi hover */
+        }
+
+    form {
+        margin-bottom: 1rem; /* Khoảng cách dưới form tìm kiếm */
+    }
+
+    input[type="text"] {
+        padding: 0.5rem;
+        border: 1px solid #ccc; /* Viền nhẹ cho input */
+        border-radius: 5px; /* Bo tròn */
+        margin-right: 0.5rem; /* Khoảng cách giữa input và button */
+    }
+
+    button {
+        background-color: #c0392b; /* Nền đỏ cho nút tìm */
+        color: white; /* Chữ trắng */
+        border: none; /* Không viền */
+        padding: 0.5rem 1rem; /* Khoảng cách trong nút */
+        border-radius: 5px; /* Bo tròn */
+        cursor: pointer; /* Con trỏ khi hover */
+    }
+
+        button:hover {
+            background-color: #a93226; /* Màu đỏ đậm khi hover */
+        }
 </style>
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Sân Cầu Lông</title>
-    <link rel="stylesheet" href="~/Content/style.css" />
-</head>
+
 <body>
     <header>
         <h1>Danh Sách Sân Cầu Lông</h1>
     </header>
+
+    <div class="search-container">
+        <form method="get" action="@Url.Action("DanhSachSan", "San")">
+            <input type="text" name="search" placeholder="Tìm sân..." />
+            <button type="submit">Tìm</button>
+        </form>
+    </div>
 
     <div class="court-list">
         @foreach (var court in Model)
@@ -79,11 +151,14 @@
                 <img src="@Url.Content(court.Img)" alt="@court.TenSan" class="court-img" />
                 <div class="court-name">@court.TenSan</div>
                 <div class="court-address">@court.DiaChi</div>
-                <div class="court-price">Giá: @court.GiaTien VND</div>
+                <div class="court-price">Giá: @court.GiaTien VND/Giờ</div>
                 <div class="court-status">Trạng thái: @court.TrangThai</div>
                 <div class="court-rating">Rating: @court.Rating</div>
+                <a href="@Url.Action("DatSan", "San", new { maSan = court.MaSan })" class="btn-book">Đặt Sân</a>
             </div>
         }
     </div>
 </body>
-</html>
+
+
+

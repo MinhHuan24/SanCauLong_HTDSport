@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "DatSan";
+}
+
+@model SanCauLong.Models.SanCauLong
+
+
+<h2>Đặt Sân: @Model.TenSan</h2>
+
+@using (Html.BeginForm("DatSan", "San", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.MaSan)
+
+    <div>
+        <label>Ngày Đặt:</label>
+        @Html.TextBox("NgayDat", DateTime.Now.ToString("yyyy-MM-dd"), new { type = "date" })
+    </div>
+    <div>
+        <label>Thời Gian Bắt Đầu:</label>
+        @Html.TextBox("ThoiGianBatDau", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), new { type = "datetime-local" })
+    </div>
+    <div>
+        <label>Thời Gian Kết Thúc:</label>
+        @Html.TextBox("ThoiGianKetThuc", DateTime.Now.AddHours(1).ToString("yyyy-MM-dd HH:mm"), new { type = "datetime-local" })
+    </div>
+
+    <button type="submit">Đặt Sân</button>
+}
+
