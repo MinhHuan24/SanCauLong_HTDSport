@@ -1,12 +1,88 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Source_Code\\ASP.NET\\SanCauLong\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|d:\\source_code\\asp.net\\sancaulong\\sancaulong\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|D:\\Source_Code\\ASP.NET\\SanCauLong\\sancaulong\\controllers\\sancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\controllers\\sancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|D:\\Source_Code\\ASP.NET\\SanCauLong\\sancaulong\\views\\san\\danhsachsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\views\\san\\danhsachsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|D:\\Source_Code\\ASP.NET\\SanCauLong\\sancaulong\\models\\sancaulong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\models\\sancaulong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Model1.edmx [Diagram1]",
+              "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Models\\Model1.edmx",
+              "RelativeDocumentMoniker": "SanCauLong\\Models\\Model1.edmx",
+              "ToolTip": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Models\\Model1.edmx [Diagram1]",
+              "RelativeToolTip": "SanCauLong\\Models\\Model1.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-10-29T07:59:14.771Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DanhSachSan.cshtml",
+              "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\DanhSachSan.cshtml",
+              "RelativeDocumentMoniker": "SanCauLong\\Views\\San\\DanhSachSan.cshtml",
+              "ToolTip": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\DanhSachSan.cshtml",
+              "RelativeToolTip": "SanCauLong\\Views\\San\\DanhSachSan.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAmwEgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-29T07:52:34.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SanController.cs",
+              "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Controllers\\SanController.cs",
+              "RelativeDocumentMoniker": "SanCauLong\\Controllers\\SanController.cs",
+              "ToolTip": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Controllers\\SanController.cs",
+              "RelativeToolTip": "SanCauLong\\Controllers\\SanController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T07:51:48.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SanCauLong.cs",
+              "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Models\\SanCauLong.cs",
+              "RelativeDocumentMoniker": "SanCauLong\\Models\\SanCauLong.cs",
+              "ToolTip": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Models\\SanCauLong.cs",
+              "RelativeToolTip": "SanCauLong\\Models\\SanCauLong.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAiwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T07:48:40.052Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

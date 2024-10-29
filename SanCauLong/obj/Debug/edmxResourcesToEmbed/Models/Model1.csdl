@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SanCauLongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BinhLuan">
+    <Key>
+      <PropertyRef Name="MaBinhLuan" />
+    </Key>
+    <Property Name="MaBinhLuan" Type="Int32" Nullable="false" />
+    <Property Name="MaSan" Type="Int32" />
+    <Property Name="MaNguoiChoi" Type="Int32" />
+    <Property Name="NgayDang" Type="DateTime" Precision="3" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__BinhLuan__MaNguo__534D60F1" FromRole="BinhLuan" ToRole="NguoiChoi" />
+    <NavigationProperty Name="SanCauLong" Relationship="Self.FK__BinhLuan__MaSan__52593CB8" FromRole="BinhLuan" ToRole="SanCauLong" />
+  </EntityType>
+  <EntityType Name="ChuSan">
+    <Key>
+      <PropertyRef Name="MaChuSan" />
+    </Key>
+    <Property Name="MaChuSan" Type="Int32" Nullable="false" />
+    <Property Name="TenSan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="MaSan" Type="Int32" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK__ChuSan__UserID__4CA06362" FromRole="ChuSan" ToRole="NguoiDung" />
+    <NavigationProperty Name="SuKiens" Relationship="Self.FK__SuKien__MaChuSan__571DF1D5" FromRole="ChuSan" ToRole="SuKien" />
+    <NavigationProperty Name="SanCauLong" Relationship="Self.FK_ChuSan_SanCauLong" FromRole="ChuSan" ToRole="SanCauLong" />
+  </EntityType>
+  <EntityType Name="DanhGiaSan">
+    <Key>
+      <PropertyRef Name="MaDanhGia" />
+    </Key>
+    <Property Name="MaDanhGia" Type="Int32" Nullable="false" />
+    <Property Name="MaSan" Type="Int32" />
+    <Property Name="MaNguoiChoi" Type="Int32" />
+    <Property Name="Score" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DanhGiaSa__MaNgu__5EBF139D" FromRole="DanhGiaSan" ToRole="NguoiChoi" />
+    <NavigationProperty Name="SanCauLong" Relationship="Self.FK__DanhGiaSa__MaSan__5DCAEF64" FromRole="DanhGiaSan" ToRole="SanCauLong" />
+  </EntityType>
+  <EntityType Name="DatSan">
+    <Key>
+      <PropertyRef Name="MaDatSan" />
+    </Key>
+    <Property Name="MaDatSan" Type="Int32" Nullable="false" />
+    <Property Name="MaSan" Type="Int32" />
+    <Property Name="MaNguoiChoi" Type="Int32" />
+    <Property Name="NgayDatSan" Type="DateTime" Precision="3" />
+    <Property Name="ThoiGianBatDau" Type="Time" Precision="7" />
+    <Property Name="ThoiGianKetThuc" Type="Time" Precision="7" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DatSan__MaNguoiC__5AEE82B9" FromRole="DatSan" ToRole="NguoiChoi" />
+    <NavigationProperty Name="SanCauLong" Relationship="Self.FK__DatSan__MaSan__59FA5E80" FromRole="DatSan" ToRole="SanCauLong" />
+  </EntityType>
+  <EntityType Name="DienDan">
+    <Key>
+      <PropertyRef Name="MaDienDan" />
+    </Key>
+    <Property Name="MaDienDan" Type="Int32" Nullable="false" />
+    <Property Name="TieuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NgayDang" Type="DateTime" Precision="3" />
+    <Property Name="TheLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TacGiaBaiDang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NguoiChoi">
+    <Key>
+      <PropertyRef Name="MaNguoiChoi" />
+    </Key>
+    <Property Name="MaNguoiChoi" Type="Int32" Nullable="false" />
+    <Property Name="Ranking" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaNguo__534D60F1" FromRole="NguoiChoi" ToRole="BinhLuan" />
+    <NavigationProperty Name="DanhGiaSans" Relationship="Self.FK__DanhGiaSa__MaNgu__5EBF139D" FromRole="NguoiChoi" ToRole="DanhGiaSan" />
+    <NavigationProperty Name="DatSans" Relationship="Self.FK__DatSan__MaNguoiC__5AEE82B9" FromRole="NguoiChoi" ToRole="DatSan" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK__NguoiChoi__UserI__4F7CD00D" FromRole="NguoiChoi" ToRole="NguoiDung" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ChuSans" Relationship="Self.FK__ChuSan__UserID__4CA06362" FromRole="NguoiDung" ToRole="ChuSan" />
+    <NavigationProperty Name="NguoiChois" Relationship="Self.FK__NguoiChoi__UserI__4F7CD00D" FromRole="NguoiDung" ToRole="NguoiChoi" />
+  </EntityType>
+  <EntityType Name="SanCauLong">
+    <Key>
+      <PropertyRef Name="MaSan" />
+    </Key>
+    <Property Name="MaSan" Type="Int32" Nullable="false" />
+    <Property Name="TenSan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Decimal" Precision="3" Scale="2" />
+    <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaSan__52593CB8" FromRole="SanCauLong" ToRole="BinhLuan" />
+    <NavigationProperty Name="ChuSans" Relationship="Self.FK_ChuSan_SanCauLong" FromRole="SanCauLong" ToRole="ChuSan" />
+    <NavigationProperty Name="DanhGiaSans" Relationship="Self.FK__DanhGiaSa__MaSan__5DCAEF64" FromRole="SanCauLong" ToRole="DanhGiaSan" />
+    <NavigationProperty Name="DatSans" Relationship="Self.FK__DatSan__MaSan__59FA5E80" FromRole="SanCauLong" ToRole="DatSan" />
+    <NavigationProperty Name="SuKiens" Relationship="Self.FK__SuKien__MaSan__5629CD9C" FromRole="SanCauLong" ToRole="SuKien" />
+    <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SuKien">
+    <Key>
+      <PropertyRef Name="MaSuKien" />
+    </Key>
+    <Property Name="MaSuKien" Type="Int32" Nullable="false" />
+    <Property Name="MaSan" Type="Int32" />
+    <Property Name="MaChuSan" Type="Int32" />
+    <Property Name="TenSuKien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
+    <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ChuSan" Relationship="Self.FK__SuKien__MaChuSan__571DF1D5" FromRole="SuKien" ToRole="ChuSan" />
+    <NavigationProperty Name="SanCauLong" Relationship="Self.FK__SuKien__MaSan__5629CD9C" FromRole="SuKien" ToRole="SanCauLong" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__BinhLuan__MaNguo__534D60F1">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="MaNguoiChoi" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="MaNguoiChoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BinhLuan__MaSan__52593CB8">
+    <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanCauLong">
+        <PropertyRef Name="MaSan" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="MaSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChuSan__UserID__4CA06362">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ChuSan">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SuKien__MaChuSan__571DF1D5">
+    <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="0..1" />
+    <End Role="SuKien" Type="Self.SuKien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuSan">
+        <PropertyRef Name="MaChuSan" />
+      </Principal>
+      <Dependent Role="SuKien">
+        <PropertyRef Name="MaChuSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChuSan_SanCauLong">
+    <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
+    <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanCauLong">
+        <PropertyRef Name="MaSan" />
+      </Principal>
+      <Dependent Role="ChuSan">
+        <PropertyRef Name="MaSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DanhGiaSa__MaNgu__5EBF139D">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
+    <End Role="DanhGiaSan" Type="Self.DanhGiaSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="MaNguoiChoi" />
+      </Principal>
+      <Dependent Role="DanhGiaSan">
+        <PropertyRef Name="MaNguoiChoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DanhGiaSa__MaSan__5DCAEF64">
+    <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
+    <End Role="DanhGiaSan" Type="Self.DanhGiaSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanCauLong">
+        <PropertyRef Name="MaSan" />
+      </Principal>
+      <Dependent Role="DanhGiaSan">
+        <PropertyRef Name="MaSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DatSan__MaNguoiC__5AEE82B9">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
+    <End Role="DatSan" Type="Self.DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="MaNguoiChoi" />
+      </Principal>
+      <Dependent Role="DatSan">
+        <PropertyRef Name="MaNguoiChoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DatSan__MaSan__59FA5E80">
+    <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
+    <End Role="DatSan" Type="Self.DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanCauLong">
+        <PropertyRef Name="MaSan" />
+      </Principal>
+      <Dependent Role="DatSan">
+        <PropertyRef Name="MaSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NguoiChoi__UserI__4F7CD00D">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="NguoiChoi">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SuKien__MaSan__5629CD9C">
+    <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
+    <End Role="SuKien" Type="Self.SuKien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanCauLong">
+        <PropertyRef Name="MaSan" />
+      </Principal>
+      <Dependent Role="SuKien">
+        <PropertyRef Name="MaSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SanCauLongEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BinhLuans" EntityType="Self.BinhLuan" />
+    <EntitySet Name="ChuSans" EntityType="Self.ChuSan" />
+    <EntitySet Name="DanhGiaSans" EntityType="Self.DanhGiaSan" />
+    <EntitySet Name="DatSans" EntityType="Self.DatSan" />
+    <EntitySet Name="DienDans" EntityType="Self.DienDan" />
+    <EntitySet Name="NguoiChois" EntityType="Self.NguoiChoi" />
+    <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+    <EntitySet Name="SanCauLongs" EntityType="Self.SanCauLong" />
+    <EntitySet Name="SuKiens" EntityType="Self.SuKien" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__BinhLuan__MaNguo__534D60F1" Association="Self.FK__BinhLuan__MaNguo__534D60F1">
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+      <End Role="BinhLuan" EntitySet="BinhLuans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BinhLuan__MaSan__52593CB8" Association="Self.FK__BinhLuan__MaSan__52593CB8">
+      <End Role="SanCauLong" EntitySet="SanCauLongs" />
+      <End Role="BinhLuan" EntitySet="BinhLuans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChuSan__UserID__4CA06362" Association="Self.FK__ChuSan__UserID__4CA06362">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="ChuSan" EntitySet="ChuSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SuKien__MaChuSan__571DF1D5" Association="Self.FK__SuKien__MaChuSan__571DF1D5">
+      <End Role="ChuSan" EntitySet="ChuSans" />
+      <End Role="SuKien" EntitySet="SuKiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChuSan_SanCauLong" Association="Self.FK_ChuSan_SanCauLong">
+      <End Role="SanCauLong" EntitySet="SanCauLongs" />
+      <End Role="ChuSan" EntitySet="ChuSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DanhGiaSa__MaNgu__5EBF139D" Association="Self.FK__DanhGiaSa__MaNgu__5EBF139D">
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+      <End Role="DanhGiaSan" EntitySet="DanhGiaSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DanhGiaSa__MaSan__5DCAEF64" Association="Self.FK__DanhGiaSa__MaSan__5DCAEF64">
+      <End Role="SanCauLong" EntitySet="SanCauLongs" />
+      <End Role="DanhGiaSan" EntitySet="DanhGiaSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DatSan__MaNguoiC__5AEE82B9" Association="Self.FK__DatSan__MaNguoiC__5AEE82B9">
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+      <End Role="DatSan" EntitySet="DatSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DatSan__MaSan__59FA5E80" Association="Self.FK__DatSan__MaSan__59FA5E80">
+      <End Role="SanCauLong" EntitySet="SanCauLongs" />
+      <End Role="DatSan" EntitySet="DatSans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NguoiChoi__UserI__4F7CD00D" Association="Self.FK__NguoiChoi__UserI__4F7CD00D">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SuKien__MaSan__5629CD9C" Association="Self.FK__SuKien__MaSan__5629CD9C">
+      <End Role="SanCauLong" EntitySet="SanCauLongs" />
+      <End Role="SuKien" EntitySet="SuKiens" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SanCauLongModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SanCauLongModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

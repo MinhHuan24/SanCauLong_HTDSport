@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SanCauLongModelStoreContainer" CdmEntityContainer="SanCauLongEntities">
+    <EntitySetMapping Name="BinhLuans">
+      <EntityTypeMapping TypeName="SanCauLongModel.BinhLuan">
+        <MappingFragment StoreEntitySet="BinhLuan">
+          <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+          <ScalarProperty Name="MaSan" ColumnName="MaSan" />
+          <ScalarProperty Name="MaNguoiChoi" ColumnName="MaNguoiChoi" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChuSans">
+      <EntityTypeMapping TypeName="SanCauLongModel.ChuSan">
+        <MappingFragment StoreEntitySet="ChuSan">
+          <ScalarProperty Name="MaChuSan" ColumnName="MaChuSan" />
+          <ScalarProperty Name="TenSan" ColumnName="TenSan" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MaSan" ColumnName="MaSan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhGiaSans">
+      <EntityTypeMapping TypeName="SanCauLongModel.DanhGiaSan">
+        <MappingFragment StoreEntitySet="DanhGiaSan">
+          <ScalarProperty Name="MaDanhGia" ColumnName="MaDanhGia" />
+          <ScalarProperty Name="MaSan" ColumnName="MaSan" />
+          <ScalarProperty Name="MaNguoiChoi" ColumnName="MaNguoiChoi" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatSans">
+      <EntityTypeMapping TypeName="SanCauLongModel.DatSan">
+        <MappingFragment StoreEntitySet="DatSan">
+          <ScalarProperty Name="MaDatSan" ColumnName="MaDatSan" />
+          <ScalarProperty Name="MaSan" ColumnName="MaSan" />
+          <ScalarProperty Name="MaNguoiChoi" ColumnName="MaNguoiChoi" />
+          <ScalarProperty Name="NgayDatSan" ColumnName="NgayDatSan" />
+          <ScalarProperty Name="ThoiGianBatDau" ColumnName="ThoiGianBatDau" />
+          <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DienDans">
+      <EntityTypeMapping TypeName="SanCauLongModel.DienDan">
+        <MappingFragment StoreEntitySet="DienDan">
+          <ScalarProperty Name="MaDienDan" ColumnName="MaDienDan" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
+          <ScalarProperty Name="TacGiaBaiDang" ColumnName="TacGiaBaiDang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NguoiChois">
+      <EntityTypeMapping TypeName="SanCauLongModel.NguoiChoi">
+        <MappingFragment StoreEntitySet="NguoiChoi">
+          <ScalarProperty Name="MaNguoiChoi" ColumnName="MaNguoiChoi" />
+          <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NguoiDungs">
+      <EntityTypeMapping TypeName="SanCauLongModel.NguoiDung">
+        <MappingFragment StoreEntitySet="NguoiDung">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanCauLongs">
+      <EntityTypeMapping TypeName="SanCauLongModel.SanCauLong">
+        <MappingFragment StoreEntitySet="SanCauLong">
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="MaSan" ColumnName="MaSan" />
+          <ScalarProperty Name="TenSan" ColumnName="TenSan" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuKiens">
+      <EntityTypeMapping TypeName="SanCauLongModel.SuKien">
+        <MappingFragment StoreEntitySet="SuKien">
+          <ScalarProperty Name="MaSuKien" ColumnName="MaSuKien" />
+          <ScalarProperty Name="MaSan" ColumnName="MaSan" />
+          <ScalarProperty Name="MaChuSan" ColumnName="MaChuSan" />
+          <ScalarProperty Name="TenSuKien" ColumnName="TenSuKien" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SanCauLongModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SanCauLongModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SanCauLongModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SanCauLongModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SanCauLongModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SanCauLongModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SanCauLongModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SanCauLongModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SanCauLongModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SanCauLongModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
