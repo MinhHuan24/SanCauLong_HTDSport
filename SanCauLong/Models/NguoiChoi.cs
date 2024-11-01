@@ -20,6 +20,7 @@ namespace SanCauLong.Models
             this.BinhLuans = new HashSet<BinhLuan>();
             this.DanhGiaSans = new HashSet<DanhGiaSan>();
             this.DatSans = new HashSet<DatSan>();
+            this.DienDans = new HashSet<DienDan>();
         }
     
         public int MaNguoiChoi { get; set; }
@@ -32,6 +33,8 @@ namespace SanCauLong.Models
         public virtual ICollection<DanhGiaSan> DanhGiaSans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DatSan> DatSans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DienDan> DienDans { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
     }
 }

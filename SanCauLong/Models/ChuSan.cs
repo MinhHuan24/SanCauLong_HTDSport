@@ -17,6 +17,7 @@ namespace SanCauLong.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ChuSan()
         {
+            this.DienDans = new HashSet<DienDan>();
             this.SuKiens = new HashSet<SuKien>();
         }
     
@@ -25,9 +26,11 @@ namespace SanCauLong.Models
         public Nullable<int> UserID { get; set; }
         public Nullable<int> MaSan { get; set; }
     
+        public virtual SanCauLong SanCauLong { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DienDan> DienDans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SuKien> SuKiens { get; set; }
-        public virtual SanCauLong SanCauLong { get; set; }
     }
 }

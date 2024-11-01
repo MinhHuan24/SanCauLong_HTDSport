@@ -3,7 +3,11 @@
   "WorkspaceRootPath": "D:\\Source_Code\\ASP.NET\\SanCauLong\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|d:\\source_code\\asp.net\\sancaulong\\sancaulong\\views\\san\\thanhtoantruoc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|d:\\source_code\\asp.net\\sancaulong\\sancaulong\\views\\san\\chonphuongthucthanhtoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\views\\san\\chonphuongthucthanhtoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|D:\\Source_Code\\ASP.NET\\SanCauLong\\sancaulong\\views\\san\\thanhtoantruoc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\views\\san\\thanhtoantruoc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -11,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\views\\san\\datsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|d:\\source_code\\asp.net\\sancaulong\\sancaulong\\views\\san\\danhsachsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|D:\\Source_Code\\ASP.NET\\SanCauLong\\sancaulong\\views\\san\\danhsachsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\views\\san\\danhsachsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -19,12 +23,8 @@
       "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\controllers\\sancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|d:\\source_code\\asp.net\\sancaulong\\sancaulong\\views\\san\\chitietsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|D:\\Source_Code\\ASP.NET\\SanCauLong\\sancaulong\\views\\san\\chitietsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\views\\san\\chitietsan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|d:\\source_code\\asp.net\\sancaulong\\sancaulong\\views\\san\\chonphuongthucthanhtoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|solutionrelative:sancaulong\\views\\san\\chonphuongthucthanhtoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E8811B2-35AB-40B5-9897-4BCB62D1C0AB}|SanCauLong\\SanCauLong.csproj|D:\\Source_Code\\ASP.NET\\SanCauLong\\sancaulong\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
@@ -38,37 +38,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "ChonPhuongThucThanhToan.cshtml",
               "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\ChonPhuongThucThanhToan.cshtml",
               "RelativeDocumentMoniker": "SanCauLong\\Views\\San\\ChonPhuongThucThanhToan.cshtml",
               "ToolTip": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\ChonPhuongThucThanhToan.cshtml",
               "RelativeToolTip": "SanCauLong\\Views\\San\\ChonPhuongThucThanhToan.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAmwHcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-29T16:35:24.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ThanhToanTruoc.cshtml",
               "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\ThanhToanTruoc.cshtml",
               "RelativeDocumentMoniker": "SanCauLong\\Views\\San\\ThanhToanTruoc.cshtml",
               "ToolTip": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\ThanhToanTruoc.cshtml",
               "RelativeToolTip": "SanCauLong\\Views\\San\\ThanhToanTruoc.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-29T16:28:50.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T16:28:50.963Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ChiTietSan.cshtml",
               "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\ChiTietSan.cshtml",
               "RelativeDocumentMoniker": "SanCauLong\\Views\\San\\ChiTietSan.cshtml",
@@ -76,12 +75,11 @@
               "RelativeToolTip": "SanCauLong\\Views\\San\\ChiTietSan.cshtml",
               "ViewState": "AgIAAHUAAAAAAAAAAAAmwIoAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-29T16:08:04.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T16:08:04.896Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DanhSachSan.cshtml",
               "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\DanhSachSan.cshtml",
               "RelativeDocumentMoniker": "SanCauLong\\Views\\San\\DanhSachSan.cshtml",
@@ -89,12 +87,11 @@
               "RelativeToolTip": "SanCauLong\\Views\\San\\DanhSachSan.cshtml",
               "ViewState": "AgIAAHYAAAAAAAAAAAAmwKEAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-29T09:02:42.783Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T09:02:42.783Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "DatSan.cshtml",
               "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Views\\San\\DatSan.cshtml",
               "RelativeDocumentMoniker": "SanCauLong\\Views\\San\\DatSan.cshtml",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "SanCauLong\\Views\\San\\DatSan.cshtml",
               "ViewState": "AgIAAFcAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-29T09:01:21.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T09:01:21.997Z"
             },
             {
               "$type": "Document",
@@ -118,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SanController.cs",
               "DocumentMoniker": "D:\\Source_Code\\ASP.NET\\SanCauLong\\SanCauLong\\Controllers\\SanController.cs",
               "RelativeDocumentMoniker": "SanCauLong\\Controllers\\SanController.cs",
@@ -126,8 +122,7 @@
               "RelativeToolTip": "SanCauLong\\Controllers\\SanController.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAswCIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T07:51:48.359Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-29T07:51:48.359Z"
             }
           ]
         }

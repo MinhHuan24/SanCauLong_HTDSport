@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SanCauLongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SanCauLongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BinhLuan">
           <Key>
             <PropertyRef Name="MaBinhLuan" />
@@ -13,14 +13,14 @@
           <Property Name="MaSan" Type="int" />
           <Property Name="MaNguoiChoi" Type="int" />
           <Property Name="NgayDang" Type="datetime" />
-          <Property Name="NoiDung" Type="text" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ChuSan">
           <Key>
             <PropertyRef Name="MaChuSan" />
           </Key>
           <Property Name="MaChuSan" Type="int" Nullable="false" />
-          <Property Name="TenSan" Type="varchar" MaxLength="100" />
+          <Property Name="TenSan" Type="nvarchar" MaxLength="100" />
           <Property Name="UserID" Type="int" />
           <Property Name="MaSan" Type="int" />
         </EntityType>
@@ -32,7 +32,7 @@
           <Property Name="MaSan" Type="int" />
           <Property Name="MaNguoiChoi" Type="int" />
           <Property Name="Score" Type="decimal" Precision="3" Scale="2" />
-          <Property Name="Comment" Type="text" />
+          <Property Name="Comment" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="DatSan">
           <Key>
@@ -44,7 +44,7 @@
           <Property Name="NgayDatSan" Type="datetime" />
           <Property Name="ThoiGianBatDau" Type="time" Precision="7" />
           <Property Name="ThoiGianKetThuc" Type="time" Precision="7" />
-          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="DienDan">
           <Key>
@@ -52,10 +52,12 @@
           </Key>
           <Property Name="MaDienDan" Type="int" Nullable="false" />
           <Property Name="TieuDe" Type="nvarchar" MaxLength="100" />
-          <Property Name="NoiDung" Type="text" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="TheLoai" Type="nvarchar" MaxLength="50" />
           <Property Name="TacGiaBaiDang" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaNguoiChoi" Type="int" />
+          <Property Name="MaChuSan" Type="int" />
         </EntityType>
         <EntityType Name="NguoiChoi">
           <Key>
@@ -70,11 +72,11 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="Role" Type="varchar" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
-          <Property Name="Username" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SanCauLong">
           <Key>
@@ -84,9 +86,8 @@
           <Property Name="TenSan" Type="nvarchar" MaxLength="100" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
           <Property Name="GiaTien" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
           <Property Name="Rating" Type="decimal" Precision="3" Scale="2" />
-          <Property Name="Img" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="SuKien">
           <Key>
@@ -98,7 +99,7 @@
           <Property Name="TenSuKien" Type="nvarchar" MaxLength="100" />
           <Property Name="NgayBatDau" Type="datetime" />
           <Property Name="NgayKetThuc" Type="datetime" />
-          <Property Name="MoTa" Type="text" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -110,7 +111,7 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK__BinhLuan__MaNguo__534D60F1">
+        <Association Name="FK__BinhLuan__MaNguo__440B1D61">
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
           <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -122,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BinhLuan__MaSan__52593CB8">
+        <Association Name="FK__BinhLuan__MaSan__4316F928">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,7 +135,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChuSan__UserID__4CA06362">
+        <Association Name="FK__ChuSan__MaSan__3D5E1FD2">
+          <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
+          <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanCauLong">
+              <PropertyRef Name="MaSan" />
+            </Principal>
+            <Dependent Role="ChuSan">
+              <PropertyRef Name="MaSan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChuSan__UserID__3C69FB99">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
           <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DanhGiaSa__MaNgu__5EBF139D">
+        <Association Name="FK__DanhGiaSa__MaNgu__5070F446">
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
           <End Role="DanhGiaSan" Type="Self.DanhGiaSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DanhGiaSa__MaSan__5DCAEF64">
+        <Association Name="FK__DanhGiaSa__MaSan__4F7CD00D">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="DanhGiaSan" Type="Self.DanhGiaSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DatSan__MaNguoiC__5AEE82B9">
+        <Association Name="FK__DatSan__MaNguoiC__4CA06362">
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
           <End Role="DatSan" Type="Self.DatSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DatSan__MaSan__59FA5E80">
+        <Association Name="FK__DatSan__MaSan__4BAC3F29">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="DatSan" Type="Self.DatSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -194,7 +207,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NguoiChoi__UserI__4F7CD00D">
+        <Association Name="FK__DienDan__MaChuSa__5441852A">
+          <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="0..1" />
+          <End Role="DienDan" Type="Self.DienDan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuSan">
+              <PropertyRef Name="MaChuSan" />
+            </Principal>
+            <Dependent Role="DienDan">
+              <PropertyRef Name="MaChuSan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DienDan__MaNguoi__534D60F1">
+          <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
+          <End Role="DienDan" Type="Self.DienDan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiChoi">
+              <PropertyRef Name="MaNguoiChoi" />
+            </Principal>
+            <Dependent Role="DienDan">
+              <PropertyRef Name="MaNguoiChoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiChoi__UserI__403A8C7D">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -206,7 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SuKien__MaChuSan__571DF1D5">
+        <Association Name="FK__SuKien__MaChuSan__47DBAE45">
           <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="0..1" />
           <End Role="SuKien" Type="Self.SuKien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -218,7 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SuKien__MaSan__5629CD9C">
+        <Association Name="FK__SuKien__MaSan__46E78A0C">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="SuKien" Type="Self.SuKien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -230,49 +267,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ChuSan_SanCauLong">
-          <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
-          <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SanCauLong">
-              <PropertyRef Name="MaSan" />
-            </Principal>
-            <Dependent Role="ChuSan">
-              <PropertyRef Name="MaSan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SanCauLongModelStoreContainer">
           <EntitySet Name="BinhLuan" EntityType="Self.BinhLuan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChuSan" EntityType="Self.ChuSan" Schema="dbo" store:Type="Tables" />
@@ -284,52 +278,61 @@
           <EntitySet Name="SanCauLong" EntityType="Self.SanCauLong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuKien" EntityType="Self.SuKien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BinhLuan__MaNguo__534D60F1" Association="Self.FK__BinhLuan__MaNguo__534D60F1">
+          <AssociationSet Name="FK__BinhLuan__MaNguo__440B1D61" Association="Self.FK__BinhLuan__MaNguo__440B1D61">
             <End Role="NguoiChoi" EntitySet="NguoiChoi" />
             <End Role="BinhLuan" EntitySet="BinhLuan" />
           </AssociationSet>
-          <AssociationSet Name="FK__BinhLuan__MaSan__52593CB8" Association="Self.FK__BinhLuan__MaSan__52593CB8">
+          <AssociationSet Name="FK__BinhLuan__MaSan__4316F928" Association="Self.FK__BinhLuan__MaSan__4316F928">
             <End Role="SanCauLong" EntitySet="SanCauLong" />
             <End Role="BinhLuan" EntitySet="BinhLuan" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChuSan__UserID__4CA06362" Association="Self.FK__ChuSan__UserID__4CA06362">
+          <AssociationSet Name="FK__ChuSan__MaSan__3D5E1FD2" Association="Self.FK__ChuSan__MaSan__3D5E1FD2">
+            <End Role="SanCauLong" EntitySet="SanCauLong" />
+            <End Role="ChuSan" EntitySet="ChuSan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChuSan__UserID__3C69FB99" Association="Self.FK__ChuSan__UserID__3C69FB99">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="ChuSan" EntitySet="ChuSan" />
           </AssociationSet>
-          <AssociationSet Name="FK__DanhGiaSa__MaNgu__5EBF139D" Association="Self.FK__DanhGiaSa__MaNgu__5EBF139D">
+          <AssociationSet Name="FK__DanhGiaSa__MaNgu__5070F446" Association="Self.FK__DanhGiaSa__MaNgu__5070F446">
             <End Role="NguoiChoi" EntitySet="NguoiChoi" />
             <End Role="DanhGiaSan" EntitySet="DanhGiaSan" />
           </AssociationSet>
-          <AssociationSet Name="FK__DanhGiaSa__MaSan__5DCAEF64" Association="Self.FK__DanhGiaSa__MaSan__5DCAEF64">
+          <AssociationSet Name="FK__DanhGiaSa__MaSan__4F7CD00D" Association="Self.FK__DanhGiaSa__MaSan__4F7CD00D">
             <End Role="SanCauLong" EntitySet="SanCauLong" />
             <End Role="DanhGiaSan" EntitySet="DanhGiaSan" />
           </AssociationSet>
-          <AssociationSet Name="FK__DatSan__MaNguoiC__5AEE82B9" Association="Self.FK__DatSan__MaNguoiC__5AEE82B9">
+          <AssociationSet Name="FK__DatSan__MaNguoiC__4CA06362" Association="Self.FK__DatSan__MaNguoiC__4CA06362">
             <End Role="NguoiChoi" EntitySet="NguoiChoi" />
             <End Role="DatSan" EntitySet="DatSan" />
           </AssociationSet>
-          <AssociationSet Name="FK__DatSan__MaSan__59FA5E80" Association="Self.FK__DatSan__MaSan__59FA5E80">
+          <AssociationSet Name="FK__DatSan__MaSan__4BAC3F29" Association="Self.FK__DatSan__MaSan__4BAC3F29">
             <End Role="SanCauLong" EntitySet="SanCauLong" />
             <End Role="DatSan" EntitySet="DatSan" />
           </AssociationSet>
-          <AssociationSet Name="FK__NguoiChoi__UserI__4F7CD00D" Association="Self.FK__NguoiChoi__UserI__4F7CD00D">
+          <AssociationSet Name="FK__DienDan__MaChuSa__5441852A" Association="Self.FK__DienDan__MaChuSa__5441852A">
+            <End Role="ChuSan" EntitySet="ChuSan" />
+            <End Role="DienDan" EntitySet="DienDan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DienDan__MaNguoi__534D60F1" Association="Self.FK__DienDan__MaNguoi__534D60F1">
+            <End Role="NguoiChoi" EntitySet="NguoiChoi" />
+            <End Role="DienDan" EntitySet="DienDan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiChoi__UserI__403A8C7D" Association="Self.FK__NguoiChoi__UserI__403A8C7D">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="NguoiChoi" EntitySet="NguoiChoi" />
           </AssociationSet>
-          <AssociationSet Name="FK__SuKien__MaChuSan__571DF1D5" Association="Self.FK__SuKien__MaChuSan__571DF1D5">
+          <AssociationSet Name="FK__SuKien__MaChuSan__47DBAE45" Association="Self.FK__SuKien__MaChuSan__47DBAE45">
             <End Role="ChuSan" EntitySet="ChuSan" />
             <End Role="SuKien" EntitySet="SuKien" />
           </AssociationSet>
-          <AssociationSet Name="FK__SuKien__MaSan__5629CD9C" Association="Self.FK__SuKien__MaSan__5629CD9C">
+          <AssociationSet Name="FK__SuKien__MaSan__46E78A0C" Association="Self.FK__SuKien__MaSan__46E78A0C">
             <End Role="SanCauLong" EntitySet="SanCauLong" />
             <End Role="SuKien" EntitySet="SuKien" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChuSan_SanCauLong" Association="Self.FK_ChuSan_SanCauLong">
-            <End Role="SanCauLong" EntitySet="SanCauLong" />
-            <End Role="ChuSan" EntitySet="ChuSan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SanCauLongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -341,21 +344,22 @@
           <Property Name="MaSan" Type="Int32" />
           <Property Name="MaNguoiChoi" Type="Int32" />
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
-          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__BinhLuan__MaNguo__534D60F1" FromRole="BinhLuan" ToRole="NguoiChoi" />
-          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__BinhLuan__MaSan__52593CB8" FromRole="BinhLuan" ToRole="SanCauLong" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__BinhLuan__MaNguo__440B1D61" FromRole="BinhLuan" ToRole="NguoiChoi" />
+          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__BinhLuan__MaSan__4316F928" FromRole="BinhLuan" ToRole="SanCauLong" />
         </EntityType>
         <EntityType Name="ChuSan">
           <Key>
             <PropertyRef Name="MaChuSan" />
           </Key>
           <Property Name="MaChuSan" Type="Int32" Nullable="false" />
-          <Property Name="TenSan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TenSan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="MaSan" Type="Int32" />
-          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__ChuSan__UserID__4CA06362" FromRole="ChuSan" ToRole="NguoiDung" />
-          <NavigationProperty Name="SuKiens" Relationship="Self.FK__SuKien__MaChuSan__571DF1D5" FromRole="ChuSan" ToRole="SuKien" />
-          <NavigationProperty Name="SanCauLong" Relationship="Self.FK_ChuSan_SanCauLong" FromRole="ChuSan" ToRole="SanCauLong" />
+          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__ChuSan__MaSan__3D5E1FD2" FromRole="ChuSan" ToRole="SanCauLong" />
+          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__ChuSan__UserID__3C69FB99" FromRole="ChuSan" ToRole="NguoiDung" />
+          <NavigationProperty Name="DienDans" Relationship="Self.FK__DienDan__MaChuSa__5441852A" FromRole="ChuSan" ToRole="DienDan" />
+          <NavigationProperty Name="SuKiens" Relationship="Self.FK__SuKien__MaChuSan__47DBAE45" FromRole="ChuSan" ToRole="SuKien" />
         </EntityType>
         <EntityType Name="DanhGiaSan">
           <Key>
@@ -365,9 +369,9 @@
           <Property Name="MaSan" Type="Int32" />
           <Property Name="MaNguoiChoi" Type="Int32" />
           <Property Name="Score" Type="Decimal" Precision="3" Scale="2" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DanhGiaSa__MaNgu__5EBF139D" FromRole="DanhGiaSan" ToRole="NguoiChoi" />
-          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__DanhGiaSa__MaSan__5DCAEF64" FromRole="DanhGiaSan" ToRole="SanCauLong" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DanhGiaSa__MaNgu__5070F446" FromRole="DanhGiaSan" ToRole="NguoiChoi" />
+          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__DanhGiaSa__MaSan__4F7CD00D" FromRole="DanhGiaSan" ToRole="SanCauLong" />
         </EntityType>
         <EntityType Name="DatSan">
           <Key>
@@ -379,9 +383,9 @@
           <Property Name="NgayDatSan" Type="DateTime" Precision="3" />
           <Property Name="ThoiGianBatDau" Type="Time" Precision="7" />
           <Property Name="ThoiGianKetThuc" Type="Time" Precision="7" />
-          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DatSan__MaNguoiC__5AEE82B9" FromRole="DatSan" ToRole="NguoiChoi" />
-          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__DatSan__MaSan__59FA5E80" FromRole="DatSan" ToRole="SanCauLong" />
+          <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DatSan__MaNguoiC__4CA06362" FromRole="DatSan" ToRole="NguoiChoi" />
+          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__DatSan__MaSan__4BAC3F29" FromRole="DatSan" ToRole="SanCauLong" />
         </EntityType>
         <EntityType Name="DienDan">
           <Key>
@@ -389,10 +393,14 @@
           </Key>
           <Property Name="MaDienDan" Type="Int32" Nullable="false" />
           <Property Name="TieuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <Property Name="TheLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TacGiaBaiDang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaNguoiChoi" Type="Int32" />
+          <Property Name="MaChuSan" Type="Int32" />
+          <NavigationProperty Name="ChuSan" Relationship="Self.FK__DienDan__MaChuSa__5441852A" FromRole="DienDan" ToRole="ChuSan" />
+          <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DienDan__MaNguoi__534D60F1" FromRole="DienDan" ToRole="NguoiChoi" />
         </EntityType>
         <EntityType Name="NguoiChoi">
           <Key>
@@ -401,23 +409,24 @@
           <Property Name="MaNguoiChoi" Type="Int32" Nullable="false" />
           <Property Name="Ranking" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaNguo__534D60F1" FromRole="NguoiChoi" ToRole="BinhLuan" />
-          <NavigationProperty Name="DanhGiaSans" Relationship="Self.FK__DanhGiaSa__MaNgu__5EBF139D" FromRole="NguoiChoi" ToRole="DanhGiaSan" />
-          <NavigationProperty Name="DatSans" Relationship="Self.FK__DatSan__MaNguoiC__5AEE82B9" FromRole="NguoiChoi" ToRole="DatSan" />
-          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__NguoiChoi__UserI__4F7CD00D" FromRole="NguoiChoi" ToRole="NguoiDung" />
+          <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaNguo__440B1D61" FromRole="NguoiChoi" ToRole="BinhLuan" />
+          <NavigationProperty Name="DanhGiaSans" Relationship="Self.FK__DanhGiaSa__MaNgu__5070F446" FromRole="NguoiChoi" ToRole="DanhGiaSan" />
+          <NavigationProperty Name="DatSans" Relationship="Self.FK__DatSan__MaNguoiC__4CA06362" FromRole="NguoiChoi" ToRole="DatSan" />
+          <NavigationProperty Name="DienDans" Relationship="Self.FK__DienDan__MaNguoi__534D60F1" FromRole="NguoiChoi" ToRole="DienDan" />
+          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__NguoiChoi__UserI__403A8C7D" FromRole="NguoiChoi" ToRole="NguoiDung" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ChuSans" Relationship="Self.FK__ChuSan__UserID__4CA06362" FromRole="NguoiDung" ToRole="ChuSan" />
-          <NavigationProperty Name="NguoiChois" Relationship="Self.FK__NguoiChoi__UserI__4F7CD00D" FromRole="NguoiDung" ToRole="NguoiChoi" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChuSans" Relationship="Self.FK__ChuSan__UserID__3C69FB99" FromRole="NguoiDung" ToRole="ChuSan" />
+          <NavigationProperty Name="NguoiChois" Relationship="Self.FK__NguoiChoi__UserI__403A8C7D" FromRole="NguoiDung" ToRole="NguoiChoi" />
         </EntityType>
         <EntityType Name="SanCauLong">
           <Key>
@@ -427,14 +436,13 @@
           <Property Name="TenSan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Rating" Type="Decimal" Precision="3" Scale="2" />
-          <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaSan__52593CB8" FromRole="SanCauLong" ToRole="BinhLuan" />
-          <NavigationProperty Name="ChuSans" Relationship="Self.FK_ChuSan_SanCauLong" FromRole="SanCauLong" ToRole="ChuSan" />
-          <NavigationProperty Name="DanhGiaSans" Relationship="Self.FK__DanhGiaSa__MaSan__5DCAEF64" FromRole="SanCauLong" ToRole="DanhGiaSan" />
-          <NavigationProperty Name="DatSans" Relationship="Self.FK__DatSan__MaSan__59FA5E80" FromRole="SanCauLong" ToRole="DatSan" />
-          <NavigationProperty Name="SuKiens" Relationship="Self.FK__SuKien__MaSan__5629CD9C" FromRole="SanCauLong" ToRole="SuKien" />
-          <Property Name="Img" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaSan__4316F928" FromRole="SanCauLong" ToRole="BinhLuan" />
+          <NavigationProperty Name="ChuSans" Relationship="Self.FK__ChuSan__MaSan__3D5E1FD2" FromRole="SanCauLong" ToRole="ChuSan" />
+          <NavigationProperty Name="DanhGiaSans" Relationship="Self.FK__DanhGiaSa__MaSan__4F7CD00D" FromRole="SanCauLong" ToRole="DanhGiaSan" />
+          <NavigationProperty Name="DatSans" Relationship="Self.FK__DatSan__MaSan__4BAC3F29" FromRole="SanCauLong" ToRole="DatSan" />
+          <NavigationProperty Name="SuKiens" Relationship="Self.FK__SuKien__MaSan__46E78A0C" FromRole="SanCauLong" ToRole="SuKien" />
         </EntityType>
         <EntityType Name="SuKien">
           <Key>
@@ -446,9 +454,9 @@
           <Property Name="TenSuKien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
           <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
-          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ChuSan" Relationship="Self.FK__SuKien__MaChuSan__571DF1D5" FromRole="SuKien" ToRole="ChuSan" />
-          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__SuKien__MaSan__5629CD9C" FromRole="SuKien" ToRole="SanCauLong" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChuSan" Relationship="Self.FK__SuKien__MaChuSan__47DBAE45" FromRole="SuKien" ToRole="ChuSan" />
+          <NavigationProperty Name="SanCauLong" Relationship="Self.FK__SuKien__MaSan__46E78A0C" FromRole="SuKien" ToRole="SanCauLong" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -460,7 +468,7 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK__BinhLuan__MaNguo__534D60F1">
+        <Association Name="FK__BinhLuan__MaNguo__440B1D61">
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
           <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -472,7 +480,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BinhLuan__MaSan__52593CB8">
+        <Association Name="FK__BinhLuan__MaSan__4316F928">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -484,7 +492,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChuSan__UserID__4CA06362">
+        <Association Name="FK__ChuSan__MaSan__3D5E1FD2">
+          <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
+          <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanCauLong">
+              <PropertyRef Name="MaSan" />
+            </Principal>
+            <Dependent Role="ChuSan">
+              <PropertyRef Name="MaSan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChuSan__UserID__3C69FB99">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
           <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -496,7 +516,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SuKien__MaChuSan__571DF1D5">
+        <Association Name="FK__DienDan__MaChuSa__5441852A">
+          <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="0..1" />
+          <End Role="DienDan" Type="Self.DienDan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuSan">
+              <PropertyRef Name="MaChuSan" />
+            </Principal>
+            <Dependent Role="DienDan">
+              <PropertyRef Name="MaChuSan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SuKien__MaChuSan__47DBAE45">
           <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="0..1" />
           <End Role="SuKien" Type="Self.SuKien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -508,19 +540,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ChuSan_SanCauLong">
-          <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
-          <End Role="ChuSan" Type="Self.ChuSan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SanCauLong">
-              <PropertyRef Name="MaSan" />
-            </Principal>
-            <Dependent Role="ChuSan">
-              <PropertyRef Name="MaSan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DanhGiaSa__MaNgu__5EBF139D">
+        <Association Name="FK__DanhGiaSa__MaNgu__5070F446">
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
           <End Role="DanhGiaSan" Type="Self.DanhGiaSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -532,7 +552,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DanhGiaSa__MaSan__5DCAEF64">
+        <Association Name="FK__DanhGiaSa__MaSan__4F7CD00D">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="DanhGiaSan" Type="Self.DanhGiaSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -544,7 +564,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DatSan__MaNguoiC__5AEE82B9">
+        <Association Name="FK__DatSan__MaNguoiC__4CA06362">
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
           <End Role="DatSan" Type="Self.DatSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -556,7 +576,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DatSan__MaSan__59FA5E80">
+        <Association Name="FK__DatSan__MaSan__4BAC3F29">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="DatSan" Type="Self.DatSan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -568,7 +588,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NguoiChoi__UserI__4F7CD00D">
+        <Association Name="FK__DienDan__MaNguoi__534D60F1">
+          <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="0..1" />
+          <End Role="DienDan" Type="Self.DienDan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiChoi">
+              <PropertyRef Name="MaNguoiChoi" />
+            </Principal>
+            <Dependent Role="DienDan">
+              <PropertyRef Name="MaNguoiChoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiChoi__UserI__403A8C7D">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
           <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -580,7 +612,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SuKien__MaSan__5629CD9C">
+        <Association Name="FK__SuKien__MaSan__46E78A0C">
           <End Role="SanCauLong" Type="Self.SanCauLong" Multiplicity="0..1" />
           <End Role="SuKien" Type="Self.SuKien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -592,7 +624,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SanCauLongEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SanCauLongEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BinhLuans" EntityType="Self.BinhLuan" />
           <EntitySet Name="ChuSans" EntityType="Self.ChuSan" />
           <EntitySet Name="DanhGiaSans" EntityType="Self.DanhGiaSan" />
@@ -603,98 +635,65 @@
           <EntitySet Name="SanCauLongs" EntityType="Self.SanCauLong" />
           <EntitySet Name="SuKiens" EntityType="Self.SuKien" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK__BinhLuan__MaNguo__534D60F1" Association="Self.FK__BinhLuan__MaNguo__534D60F1">
+          <AssociationSet Name="FK__BinhLuan__MaNguo__440B1D61" Association="Self.FK__BinhLuan__MaNguo__440B1D61">
             <End Role="NguoiChoi" EntitySet="NguoiChois" />
             <End Role="BinhLuan" EntitySet="BinhLuans" />
           </AssociationSet>
-          <AssociationSet Name="FK__BinhLuan__MaSan__52593CB8" Association="Self.FK__BinhLuan__MaSan__52593CB8">
+          <AssociationSet Name="FK__BinhLuan__MaSan__4316F928" Association="Self.FK__BinhLuan__MaSan__4316F928">
             <End Role="SanCauLong" EntitySet="SanCauLongs" />
             <End Role="BinhLuan" EntitySet="BinhLuans" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChuSan__UserID__4CA06362" Association="Self.FK__ChuSan__UserID__4CA06362">
+          <AssociationSet Name="FK__ChuSan__MaSan__3D5E1FD2" Association="Self.FK__ChuSan__MaSan__3D5E1FD2">
+            <End Role="SanCauLong" EntitySet="SanCauLongs" />
+            <End Role="ChuSan" EntitySet="ChuSans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChuSan__UserID__3C69FB99" Association="Self.FK__ChuSan__UserID__3C69FB99">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="ChuSan" EntitySet="ChuSans" />
           </AssociationSet>
-          <AssociationSet Name="FK__SuKien__MaChuSan__571DF1D5" Association="Self.FK__SuKien__MaChuSan__571DF1D5">
+          <AssociationSet Name="FK__DienDan__MaChuSa__5441852A" Association="Self.FK__DienDan__MaChuSa__5441852A">
+            <End Role="ChuSan" EntitySet="ChuSans" />
+            <End Role="DienDan" EntitySet="DienDans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SuKien__MaChuSan__47DBAE45" Association="Self.FK__SuKien__MaChuSan__47DBAE45">
             <End Role="ChuSan" EntitySet="ChuSans" />
             <End Role="SuKien" EntitySet="SuKiens" />
           </AssociationSet>
-          <AssociationSet Name="FK_ChuSan_SanCauLong" Association="Self.FK_ChuSan_SanCauLong">
-            <End Role="SanCauLong" EntitySet="SanCauLongs" />
-            <End Role="ChuSan" EntitySet="ChuSans" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DanhGiaSa__MaNgu__5EBF139D" Association="Self.FK__DanhGiaSa__MaNgu__5EBF139D">
+          <AssociationSet Name="FK__DanhGiaSa__MaNgu__5070F446" Association="Self.FK__DanhGiaSa__MaNgu__5070F446">
             <End Role="NguoiChoi" EntitySet="NguoiChois" />
             <End Role="DanhGiaSan" EntitySet="DanhGiaSans" />
           </AssociationSet>
-          <AssociationSet Name="FK__DanhGiaSa__MaSan__5DCAEF64" Association="Self.FK__DanhGiaSa__MaSan__5DCAEF64">
+          <AssociationSet Name="FK__DanhGiaSa__MaSan__4F7CD00D" Association="Self.FK__DanhGiaSa__MaSan__4F7CD00D">
             <End Role="SanCauLong" EntitySet="SanCauLongs" />
             <End Role="DanhGiaSan" EntitySet="DanhGiaSans" />
           </AssociationSet>
-          <AssociationSet Name="FK__DatSan__MaNguoiC__5AEE82B9" Association="Self.FK__DatSan__MaNguoiC__5AEE82B9">
+          <AssociationSet Name="FK__DatSan__MaNguoiC__4CA06362" Association="Self.FK__DatSan__MaNguoiC__4CA06362">
             <End Role="NguoiChoi" EntitySet="NguoiChois" />
             <End Role="DatSan" EntitySet="DatSans" />
           </AssociationSet>
-          <AssociationSet Name="FK__DatSan__MaSan__59FA5E80" Association="Self.FK__DatSan__MaSan__59FA5E80">
+          <AssociationSet Name="FK__DatSan__MaSan__4BAC3F29" Association="Self.FK__DatSan__MaSan__4BAC3F29">
             <End Role="SanCauLong" EntitySet="SanCauLongs" />
             <End Role="DatSan" EntitySet="DatSans" />
           </AssociationSet>
-          <AssociationSet Name="FK__NguoiChoi__UserI__4F7CD00D" Association="Self.FK__NguoiChoi__UserI__4F7CD00D">
+          <AssociationSet Name="FK__DienDan__MaNguoi__534D60F1" Association="Self.FK__DienDan__MaNguoi__534D60F1">
+            <End Role="NguoiChoi" EntitySet="NguoiChois" />
+            <End Role="DienDan" EntitySet="DienDans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiChoi__UserI__403A8C7D" Association="Self.FK__NguoiChoi__UserI__403A8C7D">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="NguoiChoi" EntitySet="NguoiChois" />
           </AssociationSet>
-          <AssociationSet Name="FK__SuKien__MaSan__5629CD9C" Association="Self.FK__SuKien__MaSan__5629CD9C">
+          <AssociationSet Name="FK__SuKien__MaSan__46E78A0C" Association="Self.FK__SuKien__MaSan__46E78A0C">
             <End Role="SanCauLong" EntitySet="SanCauLongs" />
             <End Role="SuKien" EntitySet="SuKiens" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SanCauLongModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SanCauLongModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SanCauLongModelStoreContainer" CdmEntityContainer="SanCauLongEntities">
+        <EntityContainerMapping StorageEntityContainer="SanCauLongModelStoreContainer" CdmEntityContainer="SanCauLongEntities1">
           <EntitySetMapping Name="BinhLuans">
             <EntityTypeMapping TypeName="SanCauLongModel.BinhLuan">
               <MappingFragment StoreEntitySet="BinhLuan">
@@ -749,6 +748,8 @@
                 <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
                 <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
                 <ScalarProperty Name="TacGiaBaiDang" ColumnName="TacGiaBaiDang" />
+                <ScalarProperty Name="MaNguoiChoi" ColumnName="MaNguoiChoi" />
+                <ScalarProperty Name="MaChuSan" ColumnName="MaChuSan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -776,7 +777,6 @@
           <EntitySetMapping Name="SanCauLongs">
             <EntityTypeMapping TypeName="SanCauLongModel.SanCauLong">
               <MappingFragment StoreEntitySet="SanCauLong">
-                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="MaSan" ColumnName="MaSan" />
                 <ScalarProperty Name="TenSan" ColumnName="TenSan" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
@@ -810,30 +810,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SanCauLongModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SanCauLongModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SanCauLongModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SanCauLongModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SanCauLongModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SanCauLongModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SanCauLongModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SanCauLongModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SanCauLongModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
