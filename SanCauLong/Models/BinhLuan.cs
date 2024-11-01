@@ -19,6 +19,7 @@ namespace SanCauLong.Models
         public Nullable<int> MaNguoiChoi { get; set; }
         public Nullable<System.DateTime> NgayDang { get; set; }
         public string NoiDung { get; set; }
+        public string Images { get; set; }
     
         public virtual NguoiChoi NguoiChoi { get; set; }
         public virtual SanCauLong SanCauLong { get; set; }

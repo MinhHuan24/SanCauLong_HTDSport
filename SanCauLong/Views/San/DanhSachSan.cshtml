@@ -147,17 +147,40 @@
     <div class="court-list">
         @foreach (var court in Model)
         {
+            bool isBooked = false;
+            DateTime currentTime = DateTime.Now;
+
+            foreach (var booking in court.DatSans)
+            {
+                // Kiểm tra nếu NgayDatSan và ThoiGianBatDau, ThoiGianKetThuc có giá trị
+                if (booking.NgayDatSan.HasValue && booking.ThoiGianBatDau.HasValue && booking.ThoiGianKetThuc.HasValue)
+                {
+                    // So sánh cả ngày và thời gian
+                    DateTime bookingStart = booking.NgayDatSan.Value.Date.Add(booking.ThoiGianBatDau.Value);
+                    DateTime bookingEnd = booking.NgayDatSan.Value.Date.Add(booking.ThoiGianKetThuc.Value);
+
+                    // Kiểm tra nếu thời gian hiện tại nằm trong khoảng thời gian đã đặt
+                    if (currentTime >= bookingStart && currentTime < bookingEnd)
+                    {
+                        isBooked = true;
+                        break;
+                    }
+                }
+            }
+
             <div class="court-card">
-                <img src="@Url.Content(court.Img)" alt="@court.TenSan" class="court-img" />
+                <img src="@Url.Content(court.Images)" alt="@court.TenSan" class="court-img" />
                 <div class="court-name">@court.TenSan</div>
                 <div class="court-address">@court.DiaChi</div>
                 <div class="court-price">Giá: @court.GiaTien VND/Giờ</div>
-                <div class="court-status">Trạng thái: @court.TrangThai</div>
+                <div class="court-status">Trạng thái: @(isBooked ? "Đã được đặt" : "Trống")</div>
                 <div class="court-rating">Rating: @court.Rating</div>
 
                 <a href="@Url.Action("ChiTietSan", "San", new { maSan = court.MaSan })" class="btn-book">Chi tiết</a>
             </div>
         }
+
+
     </div>
 </body>
 

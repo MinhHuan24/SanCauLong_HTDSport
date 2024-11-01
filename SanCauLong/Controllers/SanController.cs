@@ -10,16 +10,20 @@ namespace SanCauLong.Controllers
     public class SanController : Controller
     {
         // GET: San
-        SanCauLongEntities db = new SanCauLongEntities();
+        SanCauLongEntities1 db = new SanCauLongEntities1();
         public ActionResult Index()
         {
             return View();
         }
         //DANH SÁCH SÂN
-        public ActionResult DanhSachSan()
+        public ActionResult DanhSachSan(string search)
         {
-            var sanCauLongs = db.SanCauLongs.ToList();
-            return View(sanCauLongs);
+            var courts = db.SanCauLongs.Include("DatSans").ToList(); 
+            if (!string.IsNullOrEmpty(search))
+            {
+                courts = courts.Where(c => c.TenSan.Contains(search)).ToList();
+            }
+            return View(courts);
         }
         // CHUC NANG DAT SAN
         // GET: DatSan
@@ -69,7 +73,7 @@ namespace SanCauLong.Controllers
                 ViewBag.SoTien = tienThanhToan;
 
                 // Trả về view thanh toán trước
-                return View("ThanhToanTruoc");
+                return View("ThanhToanTruoc", san);
             }
             else
             {
@@ -106,17 +110,29 @@ namespace SanCauLong.Controllers
         // CHI TIẾT SÂN
         public ActionResult ChiTietSan(int maSan)
         {
-            // Tìm sân dựa vào mã sân
-            var san = db.SanCauLongs.FirstOrDefault(s => s.MaSan == maSan);
-
-            // Kiểm tra nếu không tìm thấy sân thì trả về NotFound
+            var san = db.SanCauLongs.Find(maSan);
             if (san == null)
             {
                 return HttpNotFound();
             }
 
-            // Trả về view với thông tin chi tiết của sân
-            return View(san);
+            // Lấy thông tin đặt sân tương ứng
+            var datSan = db.DatSans.Where(ds => ds.MaSan == maSan).ToList();
+
+            // Nếu cần chỉ lấy thông tin mới nhất hoặc phù hợp nhất
+            var thongTinDatSan = datSan.OrderByDescending(ds => ds.NgayDatSan).FirstOrDefault();
+
+            // Tạo một ViewModel hoặc trực tiếp truyền dữ liệu vào ViewBag/ViewData
+            var viewModel = new ChiTietSanViewModel
+            {
+                San = san,
+                NgayDat = thongTinDatSan?.NgayDatSan,
+                ThoiGianBatDau = thongTinDatSan?.ThoiGianBatDau,
+                ThoiGianKetThuc = thongTinDatSan?.ThoiGianKetThuc,
+                TrangThai = thongTinDatSan?.TrangThai
+            };
+
+            return View(viewModel);
         }
 
     }

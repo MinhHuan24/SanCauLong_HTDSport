@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d57c618159674a9ba336b255b5ecfbe6" Name="Diagram1" ZoomLevel="47">
-        <EntityTypeShape EntityType="SanCauLongModel.BinhLuan" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+      <Diagram DiagramId="a7b2e697d3d74014a3fd667688ba209d" Name="Diagram1">
+        <EntityTypeShape EntityType="SanCauLongModel.BinhLuan" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SanCauLongModel.ChuSan" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SanCauLongModel.DanhGiaSan" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SanCauLongModel.DatSan" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SanCauLongModel.DienDan" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SanCauLongModel.NguoiChoi" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SanCauLongModel.NguoiDung" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SanCauLongModel.SanCauLong" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SanCauLongModel.SanCauLong" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SanCauLongModel.SuKien" Width="1.5" PointX="11.25" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SanCauLongModel.sysdiagram" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SanCauLongModel.sysdiagram" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="SanCauLongModel.FK__BinhLuan__MaNguo__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="SanCauLongModel.FK__BinhLuan__MaSan__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="SanCauLongModel.FK__ChuSan__MaSan__3D5E1FD2" ManuallyRouted="false" />

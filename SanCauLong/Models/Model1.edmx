@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SanCauLongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SanCauLongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BinhLuan">
           <Key>
             <PropertyRef Name="MaBinhLuan" />
@@ -14,6 +14,7 @@
           <Property Name="MaNguoiChoi" Type="int" />
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="Images" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ChuSan">
           <Key>
@@ -58,6 +59,7 @@
           <Property Name="TacGiaBaiDang" Type="nvarchar" MaxLength="100" />
           <Property Name="MaNguoiChoi" Type="int" />
           <Property Name="MaChuSan" Type="int" />
+          <Property Name="Images" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="NguoiChoi">
           <Key>
@@ -88,6 +90,7 @@
           <Property Name="GiaTien" Type="decimal" Precision="10" Scale="2" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
           <Property Name="Rating" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="Images" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="SuKien">
           <Key>
@@ -100,6 +103,7 @@
           <Property Name="NgayBatDau" Type="datetime" />
           <Property Name="NgayKetThuc" Type="datetime" />
           <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="Images" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -331,8 +335,7 @@
             <End Role="SuKien" EntitySet="SuKien" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SanCauLongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -345,6 +348,7 @@
           <Property Name="MaNguoiChoi" Type="Int32" />
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__BinhLuan__MaNguo__440B1D61" FromRole="BinhLuan" ToRole="NguoiChoi" />
           <NavigationProperty Name="SanCauLong" Relationship="Self.FK__BinhLuan__MaSan__4316F928" FromRole="BinhLuan" ToRole="SanCauLong" />
         </EntityType>
@@ -399,6 +403,7 @@
           <Property Name="TacGiaBaiDang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MaNguoiChoi" Type="Int32" />
           <Property Name="MaChuSan" Type="Int32" />
+          <Property Name="Images" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChuSan" Relationship="Self.FK__DienDan__MaChuSa__5441852A" FromRole="DienDan" ToRole="ChuSan" />
           <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__DienDan__MaNguoi__534D60F1" FromRole="DienDan" ToRole="NguoiChoi" />
         </EntityType>
@@ -438,6 +443,7 @@
           <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Rating" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Images" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaSan__4316F928" FromRole="SanCauLong" ToRole="BinhLuan" />
           <NavigationProperty Name="ChuSans" Relationship="Self.FK__ChuSan__MaSan__3D5E1FD2" FromRole="SanCauLong" ToRole="ChuSan" />
           <NavigationProperty Name="DanhGiaSans" Relationship="Self.FK__DanhGiaSa__MaSan__4F7CD00D" FromRole="SanCauLong" ToRole="DanhGiaSan" />
@@ -455,6 +461,7 @@
           <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
           <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChuSan" Relationship="Self.FK__SuKien__MaChuSan__47DBAE45" FromRole="SuKien" ToRole="ChuSan" />
           <NavigationProperty Name="SanCauLong" Relationship="Self.FK__SuKien__MaSan__46E78A0C" FromRole="SuKien" ToRole="SanCauLong" />
         </EntityType>
@@ -702,6 +709,7 @@
                 <ScalarProperty Name="MaNguoiChoi" ColumnName="MaNguoiChoi" />
                 <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -750,6 +758,7 @@
                 <ScalarProperty Name="TacGiaBaiDang" ColumnName="TacGiaBaiDang" />
                 <ScalarProperty Name="MaNguoiChoi" ColumnName="MaNguoiChoi" />
                 <ScalarProperty Name="MaChuSan" ColumnName="MaChuSan" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -783,6 +792,7 @@
                 <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -796,6 +806,7 @@
                 <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

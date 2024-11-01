@@ -22,6 +22,7 @@ namespace SanCauLong.Models
         public string TacGiaBaiDang { get; set; }
         public Nullable<int> MaNguoiChoi { get; set; }
         public Nullable<int> MaChuSan { get; set; }
+        public string Images { get; set; }
     
         public virtual ChuSan ChuSan { get; set; }
         public virtual NguoiChoi NguoiChoi { get; set; }

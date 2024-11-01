@@ -52,16 +52,21 @@
             transform: scale(1.05);
         }
 </style>
+@if (Model != null)
+{
+    <div class="payment-container">
+        <h2>Thanh Toán Trước Cho Sân: @Model.TenSan</h2>
+        <p>Số tiền cần thanh toán: <strong>@ViewBag.SoTien VND</strong></p>
+        <img src="@Url.Content(ViewBag.QRCodeImage)" alt="QR Code" class="qr-code" />
 
-<div class="payment-container">
-    <h2>Thanh Toán Trước Cho Sân: @Model.TenSan</h2>
-    <p>Số tiền cần thanh toán: <strong>@ViewBag.SoTien VND</strong></p>
-    <img src="@Url.Content(ViewBag.QRCodeImage)" alt="QR Code" class="qr-code" />
-
-    <form action="@Url.Action("XacNhanThanhToan", "San")" method="post">
-        @Html.HiddenFor(m => m.MaSan)
-        <button type="submit" class="btn-confirm">Đã Chuyển Khoản</button>
-    </form>
-    <a href="@Url.Action("DanhSachSan", "San")" class="btn-back">Quay lại Danh Sách Sân</a>
-</div>
-
+        <form action="@Url.Action("XacNhanThanhToan", "San")" method="post">
+            @Html.HiddenFor(m => m.MaSan)
+            <button type="submit" class="btn-confirm">Đã Chuyển Khoản</button>
+        </form>
+        <a href="@Url.Action("DanhSachSan", "San")" class="btn-back">Quay lại Danh Sách Sân</a>
+    </div>
+}
+else
+{
+    <p>Không tìm thấy thông tin sân.</p>
+}

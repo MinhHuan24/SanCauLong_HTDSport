@@ -30,6 +30,7 @@ namespace SanCauLong.Models
         public Nullable<decimal> GiaTien { get; set; }
         public string TrangThai { get; set; }
         public Nullable<decimal> Rating { get; set; }
+        public string Images { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BinhLuan> BinhLuans { get; set; }
